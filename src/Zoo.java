@@ -13,17 +13,28 @@ public class Zoo {
     }
 
     static Animal createAnimal(String animalName) {
-        if (animalName.equals("snake")) {
-            return new Snake();
+        Animal animal;
+        switch (animalName) {
+            case "snake" :
+                animal = new Snake();
+                break;
+            case "lion" :
+                animal = new Lion();
+                break;
+            case "condor" :
+                animal = new Condor();
+                break;
+            case "alligator" :
+                animal = new Reptile(){
+                    @Override
+                    public String toString() {
+                        return "Alligator";
+                    }
+                };
+                break;
+            default :
+                animal = new Animal();
         }
-        else if (animalName.equals("lion")) {
-            return new Lion();
-        }
-        else if (animalName.equals("condor")) {
-            return new Condor();
-        }
-        else {
-            return new Animal();
-        }
+        return animal;
     }
 }
